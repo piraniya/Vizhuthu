@@ -9,7 +9,7 @@ const path = require('path');
 
 
 app.use(cors({
-    origin: 'http://localhost:3000', // Adjust the origin based on your frontend URL
+    origin: [process.env.CLIENT_URL], // Adjust the origin based on your frontend URL
     credentials: true,
   }))
 

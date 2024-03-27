@@ -16,7 +16,7 @@ function UpdatePlant() {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const response = await axios.get(`http://localhost:4009/api/plants/${id}`);
+                const response = await axios.get(`${process.env.REACT_APP_BACKEND_URL}/api/plants/${id}`);
                 console.log(response);
                 const { plantName, fertilizerType, soilType, botanicalName, description, category } = response.data;
                 setPlantName(plantName);
@@ -36,7 +36,7 @@ function UpdatePlant() {
 
     const handleUpdate = (e) => {
         e.preventDefault();
-        axios.put(`http://localhost:4009/api/plants/${id}`, { plantName, fertilizerType, soilType, botanicalName, description, categories })
+        axios.put(`${process.env.REACT_APP_BACKEND_URL}/api/plants/${id}`, { plantName, fertilizerType, soilType, botanicalName, description, categories })
             .then((res) => {
                 console.log(res);
                 toast.success("Plant updated successfully"); // Display success message

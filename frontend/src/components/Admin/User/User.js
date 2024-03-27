@@ -11,7 +11,7 @@ function Users() {
       const navigate = useNavigate()
       
       useEffect(()=> {
-        axios.get('http://localhost:4009/api/admin/users')
+        axios.get(`${process.env.REACT_APP_BACKEND_URL}/api/admin/users`)
         .then(res => {
             console.log(res);
           setData(res.data);
@@ -20,7 +20,7 @@ function Users() {
       }, [])
    
     const handleDelete = (id) => {
-        axios.delete('http://localhost:4009/api/admin/user/'+id)
+        axios.delete(`${process.env.REACT_APP_BACKEND_URL}/api/admin/user/`+id)
         .then(res => {
             console.log(res)
             navigate('/admin')

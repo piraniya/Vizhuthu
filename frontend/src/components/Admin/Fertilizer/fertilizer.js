@@ -10,7 +10,7 @@ function Users() {
 
   useEffect(()=> {
     // Fetch fertilizers data
-    axios.get('http://localhost:4009/api/fertilizers/')
+    axios.get(`${process.env.REACT_APP_BACKEND_URL}/api/fertilizers/`)
       .then(res => {
         console.log(res);
         setData(res.data);
@@ -20,11 +20,11 @@ function Users() {
 
   const handleDelete = (id) => {
     // Delete fertilizer by ID
-    axios.delete(`http://localhost:4009/api/fertilizers/${id}`)
+    axios.delete(`${process.env.REACT_APP_BACKEND_URL}/api/fertilizers/${id}`)
       .then(res => {
         console.log(res)
         // Reload fertilizers data after deletion
-        axios.get('http://localhost:4009/api/fertilizers')
+        axios.get(`${process.env.REACT_APP_BACKEND_URL}/api/fertilizers`)
           .then(res => {
             setData(res.data);
           })

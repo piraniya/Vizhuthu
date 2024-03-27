@@ -202,7 +202,7 @@ const AddPart = () => {
       formData.append('categories', plantData.categories);
       formData.append('plantImage', plantData.plantImage);
 
-      const response = await fetch('http://localhost:4008/api/plants/new', {
+      const response = await fetch(`${process.env.REACT_APP_BACKEND_URL}/api/plants/new`, {
         method: 'POST',
         body: formData
       });

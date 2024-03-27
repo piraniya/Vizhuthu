@@ -13,7 +13,7 @@ const OrderList = () => {
   }, [deleteSuccess]); // Update orders when deleteSuccess changes
   const fetchOrders = async () => {
     try {
-      const response = await axios.get('http://localhost:4009/api/v1/order');
+      const response = await axios.get(`${process.env.REACT_APP_BACKEND_URL}/api/v1/order`);
       setOrders(response.data.orders);
     } catch (error) {
       console.error('Error fetching orders:', error);
@@ -21,7 +21,7 @@ const OrderList = () => {
   };
   const handleDeleteOrder = async (orderId) => {
     try {
-      await axios.delete(`http://localhost:4009/api/v1/order/${orderId}`);
+      await axios.delete(`${process.env.REACT_APP_BACKEND_URL}/api/v1/order/${orderId}`);
       setDeleteSuccess(true); // Set deleteSuccess to true
     } catch (error) {
       console.error('Error deleting order:', error);
@@ -33,7 +33,7 @@ const OrderList = () => {
   };
   const handleUpdateOrder = async () => {
     try {
-      await axios.put(`http://localhost:4009/api/v1/order/${editingOrder._id}`, updatedData);
+      await axios.put(`${process.env.REACT_APP_BACKEND_URL}/api/v1/order/${editingOrder._id}`, updatedData);
       fetchOrders();
       setEditingOrder(null);
     } catch (error) {

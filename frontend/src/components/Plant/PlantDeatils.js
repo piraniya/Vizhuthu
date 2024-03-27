@@ -70,7 +70,7 @@ const PlantDetails = () => {
 
   const fetchPlantDetails = async (plantId) => {
     try {
-      const response = await fetch(`http://localhost:4009/api/plants/${plantId}`);
+      const response = await fetch(`${process.env.REACT_APP_BACKEND_URL}/api/plants/${plantId}`);
       if (!response.ok) {
         throw new Error('Failed to fetch plant details');
       }

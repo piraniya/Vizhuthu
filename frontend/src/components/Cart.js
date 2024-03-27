@@ -51,7 +51,7 @@ export default function Cart({cartItems, setCartItems}) {
     }
 
     function placeOrderHandler() {
-        fetch("http://localhost:4009/api/v1/order", {
+        fetch(`${process.env.REACT_APP_BACKEND_URL}/api/v1/order`, {
             method: 'POST',
             headers: {'Content-Type': 'application/json'},
             body: JSON.stringify({userId, cashOnDelivery, cartItems})
@@ -71,7 +71,7 @@ export default function Cart({cartItems, setCartItems}) {
         const headers = {
             "Content-Type": "application/json"
         }
-        return fetch("http://localhost:4009/api/v1/payment",{
+        return fetch(`${process.env.REACT_APP_BACKEND_URL}/api/v1/payment`,{
             method: 'POST',
             headers,
             body: JSON.stringify(body)
@@ -106,7 +106,7 @@ export default function Cart({cartItems, setCartItems}) {
 
   const checkUserId = async () => {
     try {
-      const response = await fetch(`http://localhost:4009/api/v1/check-user-orders/${userId}`);
+      const response = await fetch(`${process.env.REACT_APP_BACKEND_URL}/api/v1/check-user-orders/${userId}`);
       console.log(response)
       if (response.ok) {
         const data = await response.json();
@@ -129,7 +129,7 @@ export default function Cart({cartItems, setCartItems}) {
             ...formData,
             userId: userId,
           };
-        const response = await fetch('http://localhost:4009/api/v1/create-order', {
+        const response = await fetch(`${process.env.REACT_APP_BACKEND_URL}/api/v1/create-order`, {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',

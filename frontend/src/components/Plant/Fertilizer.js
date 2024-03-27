@@ -8,7 +8,7 @@ const AllProducts = () => {
     const fetchProducts = async () => {
       try {
         const response = await fetch(
-          `http://localhost:4009/api/fertilizers/`
+          `${process.env.REACT_APP_BACKEND_URL}/api/fertilizers/`
         );
         const data = await response.json();
         setProducts(data); // Assuming data is an array of products

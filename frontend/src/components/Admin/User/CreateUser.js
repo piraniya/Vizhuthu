@@ -12,7 +12,7 @@ function CreateUser() {
  
     const handleSubmit = (e) => {
         e.preventDefault();
-        axios.post('http://localhost:4009/api/admin/users', { name, email, password })
+        axios.post(`${process.env.REACT_APP_BACKEND_URL}/api/admin/users`, { name, email, password })
         .then(res => {
             console.log(res);
             navigate('/admin');

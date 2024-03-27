@@ -37,7 +37,7 @@ const AddFertilizer = () => {
       formData.append('image', fertilizerData.image);
       formData.append('stock', fertilizerData.stock);
 
-      const response = await fetch('http://localhost:4009/api/fertilizers/new', {
+      const response = await fetch(`${process.env.REACT_APP_BACKEND_URL}/api/fertilizers/new`, {
         method: 'POST',
         body: formData
       });

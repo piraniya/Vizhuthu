@@ -15,7 +15,7 @@ function UpdateUser() {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const response = await axios.get("http://localhost:4009/api/admin/users/" + id);
+                const response = await axios.get(`${process.env.REACT_APP_BACKEND_URL}/api/admin/users/` + id);
                 console.log(response);
                 setName(response.data.name);
                 setEmail(response.data.email);
@@ -30,7 +30,7 @@ function UpdateUser() {
 
     const handleUpdate = (e) => {
         e.preventDefault();
-        axios.put(`http://localhost:4009/api/admin/user/new/${id}`, { name, email, password }) // Include password in the request body
+        axios.put(`${process.env.REACT_APP_BACKEND_URL}/api/admin/user/new/${id}`, { name, email, password }) // Include password in the request body
             .then((res) => {
                 console.log(res);
                 navigate("/admin");

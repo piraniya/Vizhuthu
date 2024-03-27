@@ -10,8 +10,6 @@ function Admin (){
     <div>
       <Header />
       <About />
-      
-
           </div>
   );
 };

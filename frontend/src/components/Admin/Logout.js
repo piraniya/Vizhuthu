@@ -42,7 +42,7 @@ const Logout = () => {
 
     const Logout = async () => {
         try {
-            const res = await fetch('http://localhost:4008/api/users/logout', {
+            const res = await fetch(`${process.env.REACT_APP_BACKEND_URL}/api/users/logout`, {
                 method: "POST",
                 headers: {
                     Accept: "application/json",

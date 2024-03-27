@@ -17,7 +17,7 @@ const ReviewsPage = () => {
 
     const fetchData = async () => {
         try {
-            const response = await axios.get('/api/reviews'); // Assuming your API endpoint for fetching reviews is '/api/reviews'
+            const response = await axios.get(`${process.env.REACT_APP_BACKEND_URL}/api/reviews`); // Assuming your API endpoint for fetching reviews is '/api/reviews'
             setReviews(response.data);
         } catch (error) {
             console.error('Error fetching reviews:', error);
@@ -27,7 +27,7 @@ const ReviewsPage = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            await axios.post('/api/reviews', formData); // Assuming your API endpoint for submitting reviews is '/api/reviews'
+            await axios.post(`${process.env.REACT_APP_BACKEND_URL}/api/reviews`, formData); // Assuming your API endpoint for submitting reviews is '/api/reviews'
             toast.success('Review submitted successfully');
             setFormData({ message: '', name: '', position: '' });
             fetchData(); // Refresh reviews after submission
